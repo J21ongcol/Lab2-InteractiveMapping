@@ -31,7 +31,7 @@
     // Store the map in the variable 'map'.
     // "mapid" is the 'id' of the DOM element to contain the map.
     var map = L.map('mapid', {
-        center: [49.265637, -123.256113],
+        center: [40.75557, -73.99841],
         zoom: 13.5
       } // this object holds map options
     );
@@ -129,7 +129,7 @@
     var FieldGeoJSONdata;
 
 
-    $.getJSON("https://raw.githubusercontent.com/UBCGeodata/ubcv-landscape/master/geojson/ubcv_landscape_features.geojson",
+    $.getJSON("https://raw.githubusercontent.com/kevin-brown/nyc-open-geojson/master/transportation/bus-stops.geojson",
       function(data) {
         // Store data for later:
         FieldGeoJSONdata = data;
