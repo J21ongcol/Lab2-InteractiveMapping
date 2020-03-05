@@ -92,7 +92,7 @@
       if (map.hasLayer(lastLayerAdded)) {
         map.removeLayer(lastLayerAdded);
       }
-      lastLayerAdded = L.geoJSON(FieldGeoJSONdata, {
+      lastLayerAdded = L.geoJSON(StopGeoJSONdata, {
         pointToLayer: StopPointToLayer,
         onEachFeature: onEachStop,
         filter: StopToFilter
