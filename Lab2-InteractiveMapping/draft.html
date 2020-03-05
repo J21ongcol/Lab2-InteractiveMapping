@@ -18,11 +18,11 @@
   <!-- Our web map will get placed into this div element -->
 
   <div id="controls" style="margin: 15px;">
-    <button id="showAllBoroughButton">Show All Fields</button>
+    <button id="showAllStopButton">Show All Bus Stops</button>
 
     <span style="display:inline-block; width: 30px"></span>
-    <input type="text" id="highlightBoroughTextEntry" placeholder="Field Name">
-    <button id="highlightFieldButton">Highlight</button>
+    <input type="text" id="highlightStopsTextEntry" placeholder="Name an NYC Borough">
+    <button id="highlightStopButton">Highlight</button>
 
   </div>
 
@@ -36,13 +36,13 @@
       } // this object holds map options
     );
 
-   var Stadia_AlidadeSmoothDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
-        maxZoom: 20,
+  var Stadia_AlidadeSmoothDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+	maxZoom: 20,
 	attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-      }
+});
     ).addTo(map);
 
-    var FieldMarkerOptions = {
+    var StopMarkerOptions = {
       radius: 3,
       fillColor: "#FFFF66",
       color: "#000",
@@ -51,30 +51,30 @@
       fillOpacity: 0.2
     };
 
-    function onEachField(feature, layer) {
+    function onEachStop(feature, layer) {
       // does this tree even have a property named Placename?
-      if (feature.properties && feature.properties.NAME) {
-        layer.bindTooltip(feature.properties.NAME);
+      if (feature.properties && feature.properties.FIELD1) {
+        layer.bindTooltip(feature.properties.FIELD1);
       }
     }
 
-    function FieldPointToLayer(feature, latlng) {
+    function StopPointToLayer(feature, latlng) {
       return L.circleMarker(
         latlng,
-        FieldMarkerOptions
+        StopMarkerOptions
       );
     }
 
-    function FieldToFilter(feature, layer) {
-      if (FieldToHighlight === "") {
+    function StopToFilter(feature, layer) {
+      if (StopToHighlight === "") {
         return true;
         // In this case, we're not highlighting anything, so draw everything.
-      } else if (feature.properties && feature.properties.NAME) {
+      } else if (feature.properties && feature.properties.FIELD1) {
         // We just checked to make sure there are properties to avoid an error
         //   by asking for the .NAME when there are no properties.
         // Now, we need to check to see if the .NAME includes the search string we're
         //   trying to highlight.
-        return feature.properties.NAME.toLowerCase().includes(FieldToHighlight.toLowerCase());
+        return feature.properties.FIELD1.toLowerCase().includes(StopToHighlight.toLowerCase());
         // We ignore uppercase/lowercase differences.
       } else {
         return false;
@@ -85,45 +85,45 @@
 
     var lastLayerAdded = {};
 
-    function addField() {
+    function addStop() {
       if (map.hasLayer(lastLayerAdded)) {
         map.removeLayer(lastLayerAdded);
       }
       lastLayerAdded = L.geoJSON(FieldGeoJSONdata, {
-        pointToLayer: FieldPointToLayer,
-        onEachFeature: onEachField,
-        filter: FieldToFilter
+        pointToLayer: StopPointToLayer,
+        onEachFeature: onEachStop,
+        filter: StopToFilter
       });
       lastLayerAdded.addTo(map);
     };
 
-    var FieldToHighlight = "";
+    var StopToHighlight = "";
     // This is set by someone pressing the highlight button.
     // If it's an empty string, then just draw everything.
 
-    function highlightField() {
-      FieldToHighlight = document
-        .getElementById("highlightFieldTextEntry")
+    function highlightStop() {
+      StopToHighlight = document
+        .getElementById("highlightStopsTextEntry")
         .value;
-      addField();
-      FieldToHighlight = ""; // reset so that "Show All Name" works.
+      addStop();
+      StopToHighlight = ""; // reset so that "Show All Name" works.
     }
 
-    var FieldGeoJSONdata;
+    var StopGeoJSONdata;
 
 
     $.getJSON("https://raw.githubusercontent.com/kevin-brown/nyc-open-geojson/master/transportation/bus-stops.geojson",
       function(data) {
         // Store data for later:
-        FieldGeoJSONdata = data;
+        StopGeoJSONdata = data;
         // Create event listener for ShowAllName Button:
         document
-          .getElementById("showAllFieldsButton")
-          .addEventListener("click", addField);
+          .getElementById("showAllStopButton")
+          .addEventListener("click", addStop);
 
         document
-          .getElementById("highlightFieldButton")
-          .addEventListener("click", highlightField);
+          .getElementById("highlightStopButton")
+          .addEventListener("click", highlightStop);
 
       }
     );
