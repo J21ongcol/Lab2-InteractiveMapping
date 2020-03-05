@@ -21,7 +21,7 @@
     <button id="showAllStopButton">Show All Bus Stops</button>
 
     <span style="display:inline-block; width: 30px"></span>
-    <input type="text" id="highlightStopsTextEntry" placeholder="Name an NYC Borough">
+    <input type="text" id="highlightStopTextEntry" placeholder="Name an NYC Borough">
     <button id="highlightStopButton">Highlight</button>
 
   </div>
@@ -31,7 +31,7 @@
     // Store the map in the variable 'map'.
     // "mapid" is the 'id' of the DOM element to contain the map.
     var map = L.map('mapid', {
-        center: [40.75557, -73.99841],
+        center: [40.70733, -73.9356],
         zoom: 10
       } // this object holds map options
     );
@@ -47,7 +47,7 @@
 
     var StopMarkerOptions = {
       radius: 3,
-      fillColor: "#FFFF66",
+      fillColor: "#237863",
       color: "#000",
       weight: 1,
       opacity: 0.2,
