@@ -47,7 +47,7 @@
 
     var StopMarkerOptions = {
       radius: 3,
-      fillColor: "#808000",
+      fillColor: "#999900",
       color: "#000",
       weight: 1,
       opacity: 0.2,
@@ -56,8 +56,8 @@
 
     function onEachStop(feature, layer) {
       // does this tree even have a property named Placename?
-      if (feature.properties && feature.properties.FIELD1) {
-        layer.bindTooltip(feature.properties.FIELD1);
+      if (feature.properties && feature.properties.FIELD10) {
+        layer.bindTooltip(feature.properties.FIELD10);
       }
     }
 
