@@ -21,7 +21,7 @@
     <button id="showAllStopButton">Show All Bus Stops</button>
 
     <span style="display:inline-block; width: 30px"></span>
-    <input type="text" id="highlightStopTextEntry" placeholder="Name an NYC Borough">
+    <input type="text" id="highlightStopTextEntry" placeholder="Name a NYC Borough">
     <button id="highlightStopButton">Highlight</button>
 
   </div>
@@ -106,7 +106,7 @@
 
     function highlightStop() {
       StopToHighlight = document
-        .getElementById("highlightStopsTextEntry")
+        .getElementById("highlightStopTextEntry")
         .value;
       addStop();
       StopToHighlight = ""; // reset so that "Show All Name" works.
