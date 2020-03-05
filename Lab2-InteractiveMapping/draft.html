@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>UBC Fields</title>
+  <title>Bus Stops of New York City</title>
   <meta charset="utf-8" />
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
@@ -18,10 +18,10 @@
   <!-- Our web map will get placed into this div element -->
 
   <div id="controls" style="margin: 15px;">
-    <button id="showAllFieldsButton">Show All Fields</button>
+    <button id="showAllBoroughButton">Show All Fields</button>
 
     <span style="display:inline-block; width: 30px"></span>
-    <input type="text" id="highlightFieldTextEntry" placeholder="Field Name">
+    <input type="text" id="highlightBoroughTextEntry" placeholder="Field Name">
     <button id="highlightFieldButton">Highlight</button>
 
   </div>
@@ -36,32 +36,15 @@
       } // this object holds map options
     );
 
-    var Hydda_Full = L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
-        maxZoom: 17,
-        attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+   var Stadia_AlidadeSmoothDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+        maxZoom: 20,
+	attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
       }
     ).addTo(map);
 
-    //var myPoint = L.marker(
-    //                 [49.265637, -123.256113]
-    //              ).addTo(map);
-
-    //var myPoly = L.polygon(
-    //        			[
-    //        				[49.2797,-123.2678],
-    //                [49.2770,-123.2690],
-    //            		[49.2791,-123.2723],
-    //                [49.2797,-123.2678],
-    //              ],
-    //  						{color: 'red', weight: 6}
-    //						 ).addTo(map);
-
-    // load GeoJSON from a file on the web
-    // $ is jQuery.
-
     var FieldMarkerOptions = {
-      radius: 4,
-      fillColor: "#007800",
+      radius: 3,
+      fillColor: "#FFFF66",
       color: "#000",
       weight: 1,
       opacity: 0.2,
