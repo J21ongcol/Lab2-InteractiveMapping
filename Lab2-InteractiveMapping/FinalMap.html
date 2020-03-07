@@ -19,6 +19,7 @@
 
   <div id="controls" style="margin: 15px;">
     <button id="showAllStopButton">Show All Bus Stops</button>
+	  // the button that would display all bus stops in every borough
 
     <span style="display:inline-block; width: 30px"></span>
     <input type="text" id="highlightStopTextEntry" placeholder="Name a NYC Borough">
@@ -36,6 +37,7 @@
       } // this object holds map options
     );
 
+// a clean and simple look that doesn't have different colours, fonts and distracting icons
   var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
 	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 	subdomains: 'abcd',
@@ -55,7 +57,7 @@
     };
 
     function onEachStop(feature, layer) {
-      // does this tree even have a property named Placename?
+     // the hover element of the map which will display the bus stop addresses
       if (feature.properties && feature.properties.FIELD10) {
         layer.bindTooltip(feature.properties.FIELD10);
       }
@@ -71,14 +73,11 @@
     function StopToFilter(feature, layer) {
       if (StopToHighlight === "") {
         return true;
-        // In this case, we're not highlighting anything, so draw everything.
+        
       } else if (feature.properties && feature.properties.FIELD1) {
-        // We just checked to make sure there are properties to avoid an error
-        //   by asking for the .NAME when there are no properties.
-        // Now, we need to check to see if the .NAME includes the search string we're
-        //   trying to highlight.
+        
         return feature.properties.FIELD1.toLowerCase().includes(StopToHighlight.toLowerCase());
-        // We ignore uppercase/lowercase differences.
+        
       } else {
         return false;
         // This is for features that lack properties.
@@ -109,7 +108,7 @@
         .getElementById("highlightStopTextEntry")
         .value;
       addStop();
-      StopToHighlight = ""; // reset so that "Show All Name" works.
+      StopToHighlight = ""; 
     }
 
     var StopGeoJSONdata;
@@ -119,7 +118,7 @@
       function(data) {
         // Store data for later:
         StopGeoJSONdata = data;
-        // Create event listener for ShowAllName Button:
+        // Create event listener for ShowAllStops Button:
         document
           .getElementById("showAllStopButton")
           .addEventListener("click", addStop);
