@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+	//ADDING THE TITLE
 <head>
   <title>Bus Stops of New York City</title>
   <meta charset="utf-8" />
@@ -13,13 +13,14 @@
 </head>
 
 <body>
-
+	//ADDING THE BUTTON WHICH WILL DISPLAY ALL BUS STOPS WHEN CLICKED
   <div id="mapid" style="width: 600px; height: 400px;"></div>
   <!-- Our web map will get placed into this div element -->
 
   <div id="controls" style="margin: 15px;">
     <button id="showAllStopButton">Show All Bus Stops</button> 
-
+	//THE TEXT BOX WILL SAY AN INSTRUCTION FOR THE USER
+	  //WHEN THE HIGHLIGHT BUTTON IS PRESSED IT WILL CALL WHATEVER IS TYPED AND READ
     <span style="display:inline-block; width: 30px"></span>
     <input type="text" id="highlightStopTextEntry" placeholder="Name a NYC Borough">
     <button id="highlightStopButton">Highlight</button>
@@ -27,16 +28,14 @@
   </div>
 
   <script>
-    // Make a Leaflet map with L.map().
-    // Store the map in the variable 'map'.
-    // "mapid" is the 'id' of the DOM element to contain the map.
+    	//THE COORDINATES OF NEW YORK CITY AT A PARTICULAR ZOOM
     var map = L.map('mapid', {
         center: [40.70733, -73.9356],
         zoom: 10
       } // this object holds map options
     );
 
-// a clean and simple look that doesn't have different colours, fonts and distracting icons
+	//A LEAFLET TILESET THAT I BELIEVE HAS A CLEAN AND CLEAR DESIGN
   var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
 	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 	subdomains: 'abcd',
@@ -45,7 +44,7 @@
 	ext: 'png'
 }
     ).addTo(map);
-
+	//THE POINT DATA WILL BE PRESENTED WITH THE FOLLOWING ATTRIBUTES SUCH AS A SPECIFIC COLOUR AND OPACITY
     var StopMarkerOptions = {
       radius: 3,
       fillColor: "#0036A3",
@@ -56,7 +55,7 @@
     };
 
     function onEachStop(feature, layer) {
-     // the hover element of the map which will display the bus stop addresses
+     //THE HOVER ELEMENT THAT WILL DISPLAY BUS STOP ADDRESSES IF THE MOUSE IS HOVERED OVER IT
       if (feature.properties && feature.properties.FIELD10) {
         layer.bindTooltip(feature.properties.FIELD10);
       }
@@ -79,8 +78,8 @@
         
       } else {
         return false;
-        // This is for features that lack properties.
-        // Don't display them.
+        // THIS IS FOR FEATURES THAT LACK PROPERTIES OF FIELD1.
+        // IF SO, THEY WILL NOT BE DISPLAYED.
       }
     }
 
@@ -99,8 +98,8 @@
     };
 
     var StopToHighlight = "";
-    // This is set by someone pressing the highlight button.
-    // If it's an empty string, then just draw everything.
+    //THIS IS SET BY SOMEONE PRESSING THE HIGHLIGHT BUTTON.
+    //IF ITS AN EMPTY STRING, THEN JUST DRAW EVERYHTING.
 
     function highlightStop() {
       StopToHighlight = document
@@ -117,7 +116,7 @@
       function(data) {
         // Store data for later:
         StopGeoJSONdata = data;
-        // Create event listener for ShowAllStops Button:
+        //CREATES EVENT LISTENER FOR ShowAllStops BUTTON:
         document
           .getElementById("showAllStopButton")
           .addEventListener("click", addStop);
@@ -125,7 +124,7 @@
         document
           .getElementById("highlightStopButton")
           .addEventListener("click", highlightStop);
-
+	//LISTENER ADDS FUNCTION TO RUN BUS STOP DATA AT A CLICK
       }
     );
   </script>
