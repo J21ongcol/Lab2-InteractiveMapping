@@ -2,7 +2,7 @@
 
 ![](CentralPark.PNG)
 
-link to a working map: https://j21ongcol.github.io/Lab2-InteractiveMapping/Lab2-InteractiveMapping/FinalMap.html
+<p>The link to my map can be found <a href="https://j21ongcol.github.io/Lab2-InteractiveMapping/Lab2-InteractiveMapping/FinalMap.html" title="Lab 2: Interactive Mapping" target="_blank">here</a>.</p> 
 
 Collaborations and Resources:
 
