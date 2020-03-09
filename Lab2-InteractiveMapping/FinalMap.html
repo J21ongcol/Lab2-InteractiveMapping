@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-	//ADDING THE TITLE
+	
 <head>
   <title>Bus Stops of New York City</title>
   <meta charset="utf-8" />
@@ -9,10 +9,11 @@
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
+	
+	// ADDING THE BUTTON WHICH WILL DISPLAY ALL BUS STOPS WHEN CLICKED 
+	// THE TEXT BOX WILL SAY AN INSTRUCTION FOR THE USER
+	// WHEN THE HIGHLIGHT BUTTON IS PRESSED IT WILL CALL WHATEVER IS TYPED AND READ
 </head>
-
-	//ADDING THE BUTTON WHICH WILL DISPLAY ALL BUS STOPS WHEN CLICKED
 <body>
   <div id="mapid" style="width: 600px; height: 400px;"></div>
   <!-- Our web map will get placed into this div element -->
@@ -25,8 +26,7 @@
     <button id="highlightStopButton">Highlight</button>
 
   </div>
-//THE TEXT BOX WILL SAY AN INSTRUCTION FOR THE USER
-	  //WHEN THE HIGHLIGHT BUTTON IS PRESSED IT WILL CALL WHATEVER IS TYPED AND READ
+
   <script>
     	//THE COORDINATES OF NEW YORK CITY AT A PARTICULAR ZOOM
     var map = L.map('mapid', {
