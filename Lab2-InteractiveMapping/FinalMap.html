@@ -12,21 +12,21 @@
 
 </head>
 
-<body>
 	//ADDING THE BUTTON WHICH WILL DISPLAY ALL BUS STOPS WHEN CLICKED
+<body>
   <div id="mapid" style="width: 600px; height: 400px;"></div>
   <!-- Our web map will get placed into this div element -->
 
   <div id="controls" style="margin: 15px;">
     <button id="showAllStopButton">Show All Bus Stops</button> 
-	//THE TEXT BOX WILL SAY AN INSTRUCTION FOR THE USER
-	  //WHEN THE HIGHLIGHT BUTTON IS PRESSED IT WILL CALL WHATEVER IS TYPED AND READ
+	
     <span style="display:inline-block; width: 30px"></span>
     <input type="text" id="highlightStopTextEntry" placeholder="Name a NYC Borough">
     <button id="highlightStopButton">Highlight</button>
 
   </div>
-
+//THE TEXT BOX WILL SAY AN INSTRUCTION FOR THE USER
+	  //WHEN THE HIGHLIGHT BUTTON IS PRESSED IT WILL CALL WHATEVER IS TYPED AND READ
   <script>
     	//THE COORDINATES OF NEW YORK CITY AT A PARTICULAR ZOOM
     var map = L.map('mapid', {
